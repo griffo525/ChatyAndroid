@@ -1,0 +1,66 @@
+{
+  "project_info": {
+    "project_number": "240094536015",
+    "firebase_url": "https://fir-androidchat-ec24a.firebaseio.com",
+    "project_id": "fir-androidchat-ec24a",
+    "storage_bucket": "fir-androidchat-ec24a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240094536015:android:e601f043b44867b1",
+        "android_client_info": {
+          "package_name": "com.chaty.samg.chaty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240094536015-gquabk3s3gcftd2pjohv89o1jcjru3g6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chaty.samg.chaty",
+            "certificate_hash": "deec9b9bbb13bd856ff37d8c5a797c0f6464f901"
+          }
+        },
+        {
+          "client_id": "240094536015-7rqdld04sicj1bsr37bvi29ua076sumh.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "240094536015-7rqdld04sicj1bsr37bvi29ua076sumh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRQvmffi83SrvceYvVgult87OwLBQXEjI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240094536015-7rqdld04sicj1bsr37bvi29ua076sumh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "240094536015-hff6hmfqavt23kmq7ndn866s1i20cok9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Sam.Chaty"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
