@@ -8,14 +8,14 @@ import android.content.ServiceConnection;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
 
+import com.chaty.samg.chaty.model.Friend;
+import com.chaty.samg.chaty.model.ListFriend;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.chaty.samg.chaty.data.SharedPreferenceHelper;
 import com.chaty.samg.chaty.data.StaticConfig;
-import com.chaty.samg.chaty.model.Friend;
-import com.chaty.samg.chaty.model.ListFriend;
 
 import java.util.HashMap;
 

@@ -25,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaty.samg.chaty.data.FriendDB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +36,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.chaty.samg.chaty.R;
-import com.chaty.samg.chaty.data.FriendDB;
 import com.chaty.samg.chaty.data.GroupDB;
 import com.chaty.samg.chaty.data.SharedPreferenceHelper;
 import com.chaty.samg.chaty.data.StaticConfig;
@@ -98,7 +98,7 @@ public class UserProfileFragment extends Fragment {
                 tvUserName.setText(myAccount.name);
             }
 
-            setImageAvatar(context, myAccount.avata);
+            setImageAvatar(context, myAccount.avatar);
             SharedPreferenceHelper preferenceHelper = SharedPreferenceHelper.getInstance(context);
             preferenceHelper.saveUserInfo(myAccount);
         }
@@ -127,7 +127,7 @@ public class UserProfileFragment extends Fragment {
         SharedPreferenceHelper prefHelper = SharedPreferenceHelper.getInstance(context);
         myAccount = prefHelper.getUserInfo();
         setupArrayListInfo(myAccount);
-        setImageAvatar(context, myAccount.avata);
+        setImageAvatar(context, myAccount.avatar);
         tvUserName.setText(myAccount.name);
 
         recyclerView = (RecyclerView)view.findViewById(R.id.info_recycler_view);
@@ -189,7 +189,7 @@ public class UserProfileFragment extends Fragment {
                         ImageUtils.AVATAR_WIDTH, ImageUtils.AVATAR_HEIGHT);
 
                 String imageBase64 = ImageUtils.encodeBase64(liteImage);
-                myAccount.avata = imageBase64;
+                myAccount.avatar = imageBase64;
 
                 waitingDialog.setCancelable(false)
                         .setTitle("Avatar updating....")
@@ -214,7 +214,7 @@ public class UserProfileFragment extends Fragment {
                                             .show();
                                 }
                             }
-                         })
+                        })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
@@ -233,6 +233,10 @@ public class UserProfileFragment extends Fragment {
         }
     }
 
+    /**
+     * Xóa list cũ và cập nhật lại list data mới
+     * @param myAccount
+     */
     public void setupArrayListInfo(User myAccount){
         listConfig.clear();
         Configuration userNameConfig = new Configuration(USERNAME_LABEL, myAccount.name, R.mipmap.ic_account_box);
@@ -251,7 +255,7 @@ public class UserProfileFragment extends Fragment {
     private void setImageAvatar(Context context, String imgBase64){
         try {
             Resources res = getResources();
-
+            //Nếu chưa có avatar thì để hình mặc định
             Bitmap src;
             if (imgBase64.equals("default")) {
                 src = BitmapFactory.decodeResource(res, R.drawable.default_avata);
@@ -311,7 +315,7 @@ public class UserProfileFragment extends Fragment {
                                 .inflate(R.layout.dialog_edit_username,  (ViewGroup) getView(), false);
                         final EditText input = (EditText)vewInflater.findViewById(R.id.edit_username);
                         input.setText(myAccount.name);
-
+                        /*Hiển thị dialog với dEitText cho phép người dùng nhập username mới*/
                         new AlertDialog.Builder(context)
                                 .setTitle("Edit username")
                                 .setView(vewInflater)
@@ -355,8 +359,12 @@ public class UserProfileFragment extends Fragment {
             });
         }
 
+        /**
+         * Cập nhật username mới vào SharedPreference và thay đổi trên giao diện
+         */
         private void changeUserName(String newName){
             userDB.child("name").setValue(newName);
+
 
             myAccount.name = newName;
             SharedPreferenceHelper prefHelper = SharedPreferenceHelper.getInstance(context);

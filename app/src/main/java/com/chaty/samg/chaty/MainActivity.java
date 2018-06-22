@@ -17,11 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.chaty.samg.chaty.ui.FriendsFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.chaty.samg.chaty.data.StaticConfig;
 import com.chaty.samg.chaty.service.ServiceUtils;
-import com.chaty.samg.chaty.ui.FriendsFragment;
 import com.chaty.samg.chaty.ui.GroupFragment;
 import com.chaty.samg.chaty.ui.LoginActivity;
 import com.chaty.samg.chaty.ui.UserProfileFragment;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle("Chaty");
+            getSupportActionBar().setTitle("RivChat");
         }
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.about) {
-            Toast.makeText(this, "Chaty version 1.0", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Rivchat version 1.0", Toast.LENGTH_LONG).show();
             return true;
         }
 

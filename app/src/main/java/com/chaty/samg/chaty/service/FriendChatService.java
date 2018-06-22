@@ -16,6 +16,9 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Base64;
 import android.util.Log;
 
+import com.chaty.samg.chaty.data.FriendDB;
+import com.chaty.samg.chaty.model.Friend;
+import com.chaty.samg.chaty.model.ListFriend;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,12 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.chaty.samg.chaty.MainActivity;
 import com.chaty.samg.chaty.R;
-import com.chaty.samg.chaty.data.FriendDB;
 import com.chaty.samg.chaty.data.GroupDB;
 import com.chaty.samg.chaty.data.StaticConfig;
-import com.chaty.samg.chaty.model.Friend;
 import com.chaty.samg.chaty.model.Group;
-import com.chaty.samg.chaty.model.ListFriend;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,8 +87,8 @@ public class FriendChatService extends Service {
                             if (mapMark.get(friend.idRoom) != null && mapMark.get(friend.idRoom)) {
 //                                Toast.makeText(FriendChatService.this, friend.name + ": " + ((HashMap)dataSnapshot.getValue()).get("text"), Toast.LENGTH_SHORT).show();
                                 if (mapBitmap.get(friend.idRoom) == null) {
-                                    if (!friend.avata.equals(StaticConfig.STR_DEFAULT_BASE64)) {
-                                        byte[] decodedString = Base64.decode(friend.avata, Base64.DEFAULT);
+                                    if (!friend.avatar.equals(StaticConfig.STR_DEFAULT_BASE64)) {
+                                        byte[] decodedString = Base64.decode(friend.avatar, Base64.DEFAULT);
                                         mapBitmap.put(friend.idRoom, BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length));
                                     } else {
                                         mapBitmap.put(friend.idRoom, BitmapFactory.decodeResource(getResources(), R.drawable.default_avata));

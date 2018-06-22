@@ -2,7 +2,6 @@ package com.chaty.samg.chaty.model;
 
 import java.util.ArrayList;
 
-
 public class ListFriend {
     private ArrayList<Friend> listFriend;
 
@@ -17,7 +16,7 @@ public class ListFriend {
     public String getAvataById(String id){
         for(Friend friend: listFriend){
             if(id.equals(friend.id)){
-                return friend.avata;
+                return friend.avatar;
             }
         }
         return "";

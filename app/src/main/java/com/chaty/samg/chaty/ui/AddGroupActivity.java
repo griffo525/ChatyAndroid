@@ -23,15 +23,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chaty.samg.chaty.R;
+import com.chaty.samg.chaty.data.FriendDB;
+import com.chaty.samg.chaty.model.ListFriend;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
-import com.chaty.samg.chaty.data.FriendDB;
 import com.chaty.samg.chaty.data.GroupDB;
 import com.chaty.samg.chaty.data.StaticConfig;
 import com.chaty.samg.chaty.model.Group;
-import com.chaty.samg.chaty.model.ListFriend;
 import com.chaty.samg.chaty.model.Room;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
@@ -321,7 +321,7 @@ class ListPeopleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ((ItemFriendHolder) holder).txtName.setText(listFriend.getListFriend().get(position).name);
         ((ItemFriendHolder) holder).txtEmail.setText(listFriend.getListFriend().get(position).email);
-        String avata = listFriend.getListFriend().get(position).avata;
+        String avata = listFriend.getListFriend().get(position).avatar;
         final String id = listFriend.getListFriend().get(position).id;
         if (!avata.equals(StaticConfig.STR_DEFAULT_BASE64)) {
             byte[] decodedString = Base64.decode(avata, Base64.DEFAULT);
@@ -372,4 +372,3 @@ class ItemFriendHolder extends RecyclerView.ViewHolder {
         checkBox = (CheckBox) itemView.findViewById(R.id.checkAddPeople);
     }
 }
-

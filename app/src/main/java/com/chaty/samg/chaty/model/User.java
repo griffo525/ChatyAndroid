@@ -5,7 +5,7 @@ package com.chaty.samg.chaty.model;
 public class User {
     public String name;
     public String email;
-    public String avata;
+    public String avatar;
     public Status status;
     public Message message;
 

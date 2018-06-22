@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#03A9F4</color>
-    <color name="colorPrimaryDark">#0288D1</color>
-    <color name="colorAccent">#4fa881</color>
+    <color name="colorPrimary">#7fabeb</color>
+    <color name="colorPrimaryDark">#7fabeb</color>
+    <color name="colorAccent">#7fabeb</color>
     <color name="colorIndivateTab">#FFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="colorCardView">#f7f7f7</color>
@@ -11,10 +11,10 @@
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_800">#212121</color>
 
-    <color name="purple_500">#9C27B0</color>
-    <color name="deep_purple_500">#673AB7</color>
-    <color name="indigo_500">#3F51B5</color>
-    <color name="blue_500">#2196F3</color>
-    <color name="cyan_500">#00BCD4</color>
-    <color name="light_blue_500">#03A9F4</color>
+    <color name="purple_500">#7fabeb</color>
+    <color name="deep_purple_500">#F4C2D8</color>
+    <color name="indigo_500">#FBEBC1</color>
+    <color name="blue_500">#CFD6E3</color>
+    <color name="cyan_500">#FCFCFE</color>
+    <color name="light_blue_500">#7fabeb</color>
 </resources>

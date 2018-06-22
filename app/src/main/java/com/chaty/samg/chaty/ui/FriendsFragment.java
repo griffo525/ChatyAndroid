@@ -24,6 +24,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.chaty.samg.chaty.data.FriendDB;
+import com.chaty.samg.chaty.model.Friend;
+import com.chaty.samg.chaty.model.ListFriend;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -35,10 +38,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.chaty.samg.chaty.R;
-import com.chaty.samg.chaty.data.FriendDB;
 import com.chaty.samg.chaty.data.StaticConfig;
-import com.chaty.samg.chaty.model.Friend;
-import com.chaty.samg.chaty.model.ListFriend;
 import com.chaty.samg.chaty.service.ServiceUtils;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
@@ -67,7 +67,7 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private CountDownTimer detectFriendOnline;
     public static int ACTION_START_CHAT = 1;
 
-    public static final String ACTION_DELETE_FRIEND = "com.chaty.samg.DELETE_FRIEND";
+    public static final String ACTION_DELETE_FRIEND = "com.android.rivchat.DELETE_FRIEND";
 
     private BroadcastReceiver deleteFriendReceiver;
 
@@ -249,7 +249,7 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
                             Friend user = new Friend();
                             user.name = (String) userMap.get("name");
                             user.email = (String) userMap.get("email");
-                            user.avata = (String) userMap.get("avata");
+                            user.avatar = (String) userMap.get("avata");
                             user.id = id;
                             user.idRoom = id.compareTo(StaticConfig.UID) > 0 ? (StaticConfig.UID + id).hashCode() + "" : "" + (id + StaticConfig.UID).hashCode();
                             checkBeforAddFriend(id, user);
@@ -403,7 +403,7 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
                         HashMap mapUserInfo = (HashMap) dataSnapshot.getValue();
                         user.name = (String) mapUserInfo.get("name");
                         user.email = (String) mapUserInfo.get("email");
-                        user.avata = (String) mapUserInfo.get("avata");
+                        user.avatar = (String) mapUserInfo.get("avata");
                         user.id = id;
                         user.idRoom = id.compareTo(StaticConfig.UID) > 0 ? (StaticConfig.UID + id).hashCode() + "" : "" + (id + StaticConfig.UID).hashCode();
                         dataListFriend.getListFriend().add(user);
@@ -456,7 +456,7 @@ class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final String name = listFriend.getListFriend().get(position).name;
         final String id = listFriend.getListFriend().get(position).id;
         final String idRoom = listFriend.getListFriend().get(position).idRoom;
-        final String avata = listFriend.getListFriend().get(position).avata;
+        final String avata = listFriend.getListFriend().get(position).avatar;
         ((ItemFriendViewHolder) holder).txtName.setText(name);
 
         ((View) ((ItemFriendViewHolder) holder).txtName.getParent().getParent().getParent())
@@ -589,10 +589,10 @@ class ListFriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 mapMark.put(id, true);
             }
         }
-        if (listFriend.getListFriend().get(position).avata.equals(StaticConfig.STR_DEFAULT_BASE64)) {
+        if (listFriend.getListFriend().get(position).avatar.equals(StaticConfig.STR_DEFAULT_BASE64)) {
             ((ItemFriendViewHolder) holder).avata.setImageResource(R.drawable.default_avata);
         } else {
-            byte[] decodedString = Base64.decode(listFriend.getListFriend().get(position).avata, Base64.DEFAULT);
+            byte[] decodedString = Base64.decode(listFriend.getListFriend().get(position).avatar, Base64.DEFAULT);
             Bitmap src = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             ((ItemFriendViewHolder) holder).avata.setImageBitmap(src);
         }
@@ -733,4 +733,3 @@ class ItemFriendViewHolder extends RecyclerView.ViewHolder{
         this.context = context;
     }
 }
-

@@ -23,6 +23,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaty.samg.chaty.data.FriendDB;
+import com.chaty.samg.chaty.model.ListFriend;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -31,11 +33,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.chaty.samg.chaty.R;
-import com.chaty.samg.chaty.data.FriendDB;
 import com.chaty.samg.chaty.data.GroupDB;
 import com.chaty.samg.chaty.data.StaticConfig;
 import com.chaty.samg.chaty.model.Group;
-import com.chaty.samg.chaty.model.ListFriend;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyProgressDialog;
 
@@ -249,7 +249,7 @@ public class GroupFragment extends Fragment implements SwipeRefreshLayout.OnRefr
                                     .show();
                         }
                     })
-                    ;
+            ;
         }else{
             FirebaseDatabase.getInstance().getReference().child("user/"+group.member.get(index)+"/group/"+group.id).removeValue()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
